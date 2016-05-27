@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>XML  DOM实例</title>
+</head>
+<body>
+    <h1>这是一个简单的xml实例</h1>
+    <div>
+        <b>To:</b><span id="to"></span><br/>
+        <b>From:</b><span id="from"></span><br/>
+        <b>Message:</b><span id="message"></span>
+    </div>
+
+    <script>
+        if(window.XMLHttpRequest){
+            //针对目前市面上主流的浏览器
+            xmlhttp=new XMLHttpRequest();
+        }
+        else{
+            //针对ie5和ie6
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+
+        xmlhttp.open("GET","note.xml",false);
+        xmlhttp.send();
+        xmlDoc=xmlhttp.responseXML;
+
+        document.getElementById("to").innerHTML=
+                xmlDoc.getElementsByTagName("to")[0].childNodes[0].nodeValue;
+        document.getElementById("from").innerHTML=
+                xmlDoc.getElementsByTagName("from")[0].childNodes[0].nodeValue;
+        document.getElementById("message").innerHTML=
+                xmlDoc.getElementsByTagName("body")[0].childNodes[0].nodeValue;
+    </script>
+</body>
+</html>
