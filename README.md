@@ -1,2 +1,2 @@
 # XML
-一些关于XML的基础知识和实用练习
+Something about XML
